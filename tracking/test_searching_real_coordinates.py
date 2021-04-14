@@ -1,11 +1,8 @@
 import unittest
 import json
-import numpy as np
 import searching_real_coordinates
-from mpl_toolkits.mplot3d import Axes3D
-from matplotlib import pyplot as plt
 
-from classes import Point, Camera
+from classes import Point
 from work_with_json import read_json
 
 class Test_get_coordinates(unittest.TestCase):
