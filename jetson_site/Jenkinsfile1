@@ -1,0 +1,18 @@
+pipeline {
+    agent {
+       label "deploy"
+    }
+    stages {
+          stage("connect") {
+             steps {
+               script {
+                   sh '''
+                   make image VERSION=jetson_site BRANCH=null FILE=./jetson_site/Dockerfile 
+                   chmod +x ./jetson_site/cve.sh
+                   sudo docker run -i --rm -v $(pwd)/jetson_site/cve.sh:/jetson_site/cve.sh --entrypoint="/jetson_site/cve.sh" smartspace/storage:jetson_site
+                   ''' 
+               }
+             }
+          }
+        }
+} 
