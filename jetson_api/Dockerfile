@@ -1,4 +1,5 @@
 FROM ubuntu
+ENV TZ=Europe
 WORKDIR /jetson_api
 RUN apt-get update
 RUN apt -y --force-yes install nodejs npm
