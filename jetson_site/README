@@ -1,0 +1,4 @@
+ sudo apt install nodejs
+yarn install
+yarn build
+yarn start -H 127.0.0.1
