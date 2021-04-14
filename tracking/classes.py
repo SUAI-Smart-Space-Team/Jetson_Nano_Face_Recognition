@@ -1,7 +1,7 @@
 import numpy as np
 
 
-class Point:
+class Point: # Point class defines coordinates in three-dimensional space
     def __init__(self, x, y, z):
         self.x = x
         self.y = y
@@ -66,8 +66,8 @@ class Camera:
             self.point_to = point_to
             self.angle_v, self.angle_h = self.find_angles()
         else:
-            self.angle_v = np.mod(angle_v, 360)
-            self.angle_h = np.mod(angle_h, 360)
+            self.angle_v = np.mod(angle_v, 360) # the angle between the x and y axes
+            self.angle_h = np.mod(angle_h, 360) # the angle between the z and y axes
             self.point_to = self.find_point()
 
     def __eq__(self, other):
