@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-curl https://raw.githubusercontent.com/aquasecurity/trivy/master/contrib/install.sh | sh && \
+wget https://raw.githubusercontent.com/aquasecurity/trivy/master/contrib/install.sh | sh && \
 
     ./bin/trivy fs -s CRITICAL --exit-code 1 / && \
 
