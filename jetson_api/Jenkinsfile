@@ -1,1 +1,18 @@
-
+pipeline {
+    agent {
+       label "deploy"
+    }
+    stages {
+          stage("connect") {
+             steps {
+               script {
+                   sh '''
+                   make image VERSION=jetson_api FILE=./jetson_api/Dockerfile BRANCH=null
+                   make push VERSION=jetson_api
+                   make pull VERSION=jetson_api
+                   '''
+               }
+             }
+          }
+        }
+}
