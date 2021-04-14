@@ -7,7 +7,7 @@ from classes import Point, Camera
 from work_with_json import read_json
 
 
-def get_coordinates(camera: Camera, h: np.float, w: np.float,
+def get_coordinates(camera: Camera, h: np.float, w: np.float, # function that converts data from json to real coordinates
                     j: np.float, i: np.float, r: np.float) -> Point:
     central_point_x = w / 2
     central_point_y = h / 2
@@ -115,11 +115,3 @@ if __name__ == '__main__':
     ax.set_zlim3d(0, max(H, W, L))
 
     plt.show()
-
-# правильные переводы из вектора в углы и наоборот
-# замеры помещения
-# получение тестовых данных
-# нахождение реальной координаты
-
-# тесты к нахождению реальной координаты
-# проверка по этим тестам
