@@ -9,4 +9,3 @@ curl https://raw.githubusercontent.com/aquasecurity/trivy/master/contrib/install
     ./bin/trivy image --reset && \
 
     rm ./bin/trivy
-   
