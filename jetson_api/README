@@ -1,0 +1,4 @@
+sudo npm install npm@latest
+Заходим в папку api
+  yarn install 
+  yarn start
