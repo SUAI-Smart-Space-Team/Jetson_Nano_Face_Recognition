@@ -7,6 +7,6 @@ RUN apt -y --force-yes install nodejs npm
 RUN npm install npm@latest
 RUN npm install --global yarn
 #RUN apt-get update && apt-get -y --force-yes install curl
-RUN apt install wget
+RUN apt -y --force-yes install wget
 COPY ./jetson_api .
 CMD ["yarn", "start"]
