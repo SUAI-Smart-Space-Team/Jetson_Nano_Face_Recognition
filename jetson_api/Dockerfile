@@ -1,7 +1,7 @@
 FROM ubuntu
 WORKDIR /jetson_api
-RUN sudo apt-get update
-RUN sudo npm install npm@latest
+RUN apt-get update
+RUN npm install npm@latest
 RUN yarn install
 COPY . .
 CMD ["yarn", "start"]
