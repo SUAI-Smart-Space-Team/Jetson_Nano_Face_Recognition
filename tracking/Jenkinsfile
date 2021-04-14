@@ -8,7 +8,7 @@ pipeline {
                script {
                    sh '''
                        apt install -y --force-yes python3-pip
-                       pip3 install -y --force-yes numpy
+                       pip3 install numpy
                        cd ./tracking
                        python3 -m unittest
                    ''' 
