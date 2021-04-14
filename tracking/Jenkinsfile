@@ -8,8 +8,7 @@ pipeline {
                script {
                    sh '''
                        cd ./tracking
-                       ls
-                       python -m unittest
+                       python3 -m unittest
                    ''' 
                }
              }
