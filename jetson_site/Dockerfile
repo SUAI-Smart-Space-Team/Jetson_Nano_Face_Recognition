@@ -7,5 +7,6 @@ RUN apt -y --force-yes install nodejs npm
 RUN npm install npm@latest
 RUN npm install --global yarn
 COPY . .
+RUN ls
 RUN yarn build
 CMD ["yarn", "start -H 127.0.0.1"]
