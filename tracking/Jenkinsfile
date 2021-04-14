@@ -7,7 +7,7 @@ pipeline {
              steps {
                script {
                    sh '''
-                       python test_searching_real_coordinates.py
+                       python ./tracking/test_searching_real_coordinates.py
                    ''' 
                }
              }
