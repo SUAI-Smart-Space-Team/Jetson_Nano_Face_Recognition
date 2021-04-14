@@ -223,6 +223,7 @@ void sendId(string Id){
 //----------------------------------------------------------------------------------------
 int main(int argc, char **argv)
 {
+   sendId ("./60775859bd73d4649e0c0ffc.jpg");
     //addFace("http://res.cloudinary.com/demo/image/upload/sample.jpg");
     printTime();
     cout << endl;
