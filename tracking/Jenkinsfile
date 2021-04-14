@@ -7,6 +7,8 @@ pipeline {
              steps {
                script {
                    sh '''
+                       apt install python3-pip
+                       pip install numpy
                        cd ./tracking
                        python3 -m unittest
                    ''' 
