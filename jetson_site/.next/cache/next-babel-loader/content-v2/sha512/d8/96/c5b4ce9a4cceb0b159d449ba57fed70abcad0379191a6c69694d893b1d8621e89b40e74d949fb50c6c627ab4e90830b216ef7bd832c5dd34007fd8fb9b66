@@ -1,0 +1,1 @@
+{"ast":null,"code":"import mongoose from 'mongoose';\nconst StatSchema = new mongoose.Schema({\n  name: String,\n  date: {\n    type: Date,\n    default: Date.now\n  }\n});\nexport default mongoose.models.Stat || mongoose.model('Stat', StatSchema);","map":null,"metadata":{},"sourceType":"module"}
