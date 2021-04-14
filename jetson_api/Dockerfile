@@ -5,6 +5,6 @@ WORKDIR /jetson_api
 RUN apt-get update
 RUN apt -y --force-yes install nodejs npm
 RUN npm install npm@latest
-RUN yarn install
+RUN npm install --global yarn
 COPY . .
 CMD ["yarn", "start"]
