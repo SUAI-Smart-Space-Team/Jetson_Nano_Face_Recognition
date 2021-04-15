@@ -12,4 +12,4 @@ The numbering of the walls is not important.
 It is necessary to create an object of the camera class stored in the classes.py file and pass two corners as parameters. The first is the angle between the x and y axes (angle _h), the second is the angle between the y and z axes
 ![Скриншот 15-04-2021 131955](https://user-images.githubusercontent.com/56771735/114854531-96569a00-9ded-11eb-8435-913f831abb80.png)
 ![2](https://user-images.githubusercontent.com/56771735/114854538-98205d80-9ded-11eb-896c-0c9a565853bf.png)
-Для того, чтобы получить точку, в которую направленна камера необходимо вызвать метод find_point, который вернет значение точки в формате [x,y,z]
+In order to get the point to which the camera is directed, you need to call the find_point method, which will return the point value in the format [x, y, z]
