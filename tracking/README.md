@@ -29,10 +29,7 @@ The configuration file room.json contains the following parameters:
 			[0, 8.8, 0],
 			[0, 8.8, 2.85],
 			[5.4, 8.8, 2.85],
-			[5.4, 8.8, 0 ]
-			
-		]
-	},
+			[5.4, 8.8, 0 ]]},
   
 walls - a parameter that describes a room. Each walls parameter has a value (1-4) and is described by four dots. Points are specified in the format [x, y, z] clockwise, the first point is the bottom left corner of the wall, the last point is the bottom right corner.
 ![image](https://user-images.githubusercontent.com/56771735/114852858-d87edc00-9deb-11eb-81ef-c1c2fa27bc7f.png)
@@ -40,6 +37,8 @@ walls - a parameter that describes a room. Each walls parameter has a value (1-4
 
 
 The numbering of the walls is not important. 
+
+
 2) "Cameras": {
 		"1": {
 			"point": [
