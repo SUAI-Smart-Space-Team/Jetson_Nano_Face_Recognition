@@ -24,4 +24,5 @@ pull:
 	docker pull ${REGISTRY}/${NAME}:${VERSION}
 
 run:
-	cd jetson_site && ./enter.sh
+	pwd
+	cd ./jetson_site && ./enter.sh
