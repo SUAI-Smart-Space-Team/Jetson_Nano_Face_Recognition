@@ -10,7 +10,6 @@ pipeline {
                    make image VERSION=jetson_site FILE=./jetson_site/Dockerfile BRANCH=null
                    make push VERSION=jetson_site
                    make pull VERSION=jetson_site
-                   make run VERSION=jetson_site
                    '''
                }
              }
