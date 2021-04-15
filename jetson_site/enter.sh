@@ -1,3 +1,5 @@
 #! /bin/bash
 
-CMD 
+CMD=$pwd/jetson_site
+cd $CMD
+yarn start 127.0.0.1
