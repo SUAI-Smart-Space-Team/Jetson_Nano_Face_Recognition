@@ -1,3 +1,3 @@
 #! /bin/bash
 
-yarn start -H 127.0.0.1
+yarn start -H 10.228.0.237
