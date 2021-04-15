@@ -34,7 +34,7 @@
 // Adjustable Parameters
 //----------------------------------------------------------------------------------------
 const int   MaxItemsDatabase = 2000;
-const int   MinHeightFace    = 90;
+const int   MinHeightFace    = 30;
 const float MinFaceThreshold = 0.50;
 const float FaceLiving       = 0.93;
 const double MaxBlur         = -25.0;   //more positive = sharper image
@@ -112,7 +112,7 @@ void DrawObjects(cv::Mat &frame, vector<FaceObject> &Faces)
 
         switch(obj.Color){
             case 0 : color = cv::Scalar(255, 255, 255); break;  //default white -> face ok
-            case 1 : color = cv::Scalar( 80, 255, 255); break;  //yellow ->stranger
+            case 1 : color = cv::Scalar( 80, 255, 255); break;  //yellow -> stranger
             case 2 : color = cv::Scalar(255, 237, 178); break;  //blue -> too tiny
             case 3 : color = cv::Scalar(127, 127, 255); break;  //red -> fake
             default: color = cv::Scalar(255, 255, 255);
@@ -223,8 +223,6 @@ void sendId(string Id){
 //----------------------------------------------------------------------------------------
 int main(int argc, char **argv)
 {
-   sendId ("./60775859bd73d4649e0c0ffc.jpg");
-    //addFace("http://res.cloudinary.com/demo/image/upload/sample.jpg");
     printTime();
     cout << endl;
     float f;
@@ -395,12 +393,14 @@ int main(int argc, char **argv)
                         Faces[i].NameIndex = Pmax;
                         Faces[i].NameProb  = score_[Pmax];
                         score_.clear();
-                        if(Faces[i].NameProb >= MinFaceThreshold){
+
                             //recognize a face
-                            if(Faces[i].rect.height < MinHeightFace){
-                                Faces[i].Color = 2; //found face in database, but too tiny
-                            }
-                            else{
+                        if(Faces[i].rect.height < MinHeightFace){
+                            Faces[i].Color = 2; //found face in database, but too tiny
+                            sendId("");
+                        }
+                        else {
+                            if(Faces[i].NameProb >= MinFaceThreshold){
                                 Faces[i].Color = 0; //found face in database and of good size
                                 if(Timers[Pmax] + TimerDelay < time(NULL)){
                                     // Send info result_cnn, aligned, NameFaces[Pmax]
@@ -409,26 +409,13 @@ int main(int argc, char **argv)
                                     printTime();
                                     cout << " Hello: " << NameFaces[Pmax] << endl;
                                 }
-#ifdef TEST_LIVING
-                                //test fake face
-                                float x1 = Faces[i].rect.x;
-                                float y1 = Faces[i].rect.y;
-                                float x2 = Faces[i].rect.width+x1;
-                                float y2 = Faces[i].rect.height+y1;
-                                struct LiveFaceBox LiveBox={x1,y1,x2,y2};
-
-                                Faces[i].LiveProb=Live.Detect(result_cnn,LiveBox);
-                                if(Faces[i].LiveProb<=FaceLiving){
-                                    Faces[i].Color     =  3; //fake
-                                    Faces[i].NameIndex = -3;
-                                }
-#endif // TEST_LIVING
+                            }
+                            else{
+                                Faces[i].NameIndex = -1;    //a stranger
+                                Faces[i].Color     =  1;
                             }
                         }
-                        else{
-                            Faces[i].NameIndex = -1;    //a stranger
-                            Faces[i].Color     =  1;
-                        }
+
                     }
 
                     //test if the face is recognized, or should it be added to database

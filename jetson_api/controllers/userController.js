@@ -9,14 +9,15 @@ const Stat = require('../models/Stat')
 const tmpPath = path.normalize(`${__dirname}/../../jetson_tmp/`)
 
 const userController = async (req, res, next) => {
-    const { name } = JSON.parse(req.body)
-
+   
+    const { id: name } = JSON.parse(req.body);
+    
     if (name) {
         Image.findOne({ name }).populate("user").exec((err, image) => {
             const stats = new Stat({
                 name: image.user.name
             })
-            stats.save(err => console.error(err))
+            stats.save(err => console.error(err)) 
 
             res.send(req.body)
         })
