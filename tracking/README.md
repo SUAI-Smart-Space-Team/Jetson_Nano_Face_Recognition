@@ -66,7 +66,7 @@ The numbering of the walls is not important.
 		}
 	}
 The configuration file stores values for two cameras("1", "2")
-	1) "point " - параметр записанный в формате Point [x,y,z] относительно start_point , который указывает расположение камеры относительно start_point  
+	1) "point" - parameter written in the format Point [x, y, z] relative to start_point, which indicates the location of the camera relative to start_point 
 	2) "direction" - parameter written in the format Point [x, y, z] relative to start_point, which indicates the point on the virtual plane to which the camera is directed
 It is necessary to create an object of the camera class stored in the classes.py file and pass two corners as parameters. The first is the angle between the x and y axes (angle _h), the second is the angle between the y and z axes
 ![Скриншот 15-04-2021 131955](https://user-images.githubusercontent.com/56771735/114854531-96569a00-9ded-11eb-8435-913f831abb80.png)
