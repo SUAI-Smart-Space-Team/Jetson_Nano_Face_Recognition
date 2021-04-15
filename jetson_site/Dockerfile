@@ -8,7 +8,7 @@ RUN npm install npm@latest
 RUN npm install --global yarn
 COPY . .
 RUN ls
-RUN cd ./jetson_site
+RUN cd jetson_site
 RUN ls
 RUN yarn install
 RUN yarn build
