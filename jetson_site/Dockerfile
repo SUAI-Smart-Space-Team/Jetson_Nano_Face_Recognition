@@ -11,4 +11,4 @@ RUN yarn install
 RUN yarn build
 COPY . .
 CMD ["sh", "enter.sh"]
-LABEL arch=arm64
+LABEL arch=armv8
