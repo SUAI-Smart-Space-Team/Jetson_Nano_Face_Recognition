@@ -3,8 +3,13 @@ This module is responsible for determining the coordinates of a person in the au
 # Description
 The module receives data from cameras in json format as input and converts them into the real coordinate of a person in space
 # Usage guide
-In the configuration file, room.json is set in the following format:
-Each wall is set by four coordinates, values are set clockwise from the lower left corner
-Each camera is set by two parameters:
-1) point - coordinates of the camera location
-2) 'direction' sets the direction of the camera. The values in the required format can be obtained by creating an object of the Camera class, which receives 2 corners as parameters. angle_h - the angle between the x and y axes. angle_v - the angle between the y and z axes. Then you need to run the find_point method, which returns an object of the Point class.
+The configuration file room.json contains the following parameters:
+Сoordinates in the configuration file must be specified relative to the point [0,0,0](start_point), which is located in the corner between the door to the auditorium and the wall
+1) walls - a parameter that describes a room. Each walls parameter has a value (1-4) and is described by four dots. Points are specified in the format [x, y, z] clockwise, the first point is the bottom left corner of the wall, the last point is the bottom right corner.
+![image](https://user-images.githubusercontent.com/56771735/114852858-d87edc00-9deb-11eb-81ef-c1c2fa27bc7f.png)
+The numbering of the walls is not important. 
+2) direcrtion - the point to which the camera is directed. This point can be entered in the format [x, y, z] or obtained using the two angles to which the camera is directed, for this:
+It is necessary to create an object of the camera class stored in the classes.py file and pass two corners as parameters. The first is the angle between the x and y axes (angle _h), the second is the angle between the y and z axes
+![Скриншот 15-04-2021 131955](https://user-images.githubusercontent.com/56771735/114854531-96569a00-9ded-11eb-8435-913f831abb80.png)
+![2](https://user-images.githubusercontent.com/56771735/114854538-98205d80-9ded-11eb-896c-0c9a565853bf.png)
+Для того, чтобы получить точку, в которую направленна камера необходимо вызвать метод find_point, который вернет значение точки в формате [x,y,z]
