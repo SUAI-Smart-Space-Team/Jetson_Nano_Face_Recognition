@@ -6,7 +6,7 @@ RUN apt-get update
 RUN apt -y --force-yes install nodejs npm
 RUN npm install npm@latest
 RUN npm install --global yarn
-RUN pwd
+RUN pwd && ls
 RUN yarn install
 RUN yarn build
 COPY . .
