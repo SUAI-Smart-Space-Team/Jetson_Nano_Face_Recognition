@@ -25,4 +25,5 @@ pull:
 
 run:
 	pwd
+	ls
 	cd ./jetson_site && ./enter.sh
