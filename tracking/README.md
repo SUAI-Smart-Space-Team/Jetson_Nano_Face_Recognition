@@ -4,7 +4,7 @@ This module is responsible for determining the coordinates of a person in the au
 The module receives data from cameras in json format as input and converts them into the real coordinate of a person in space
 # Usage guide
 The configuration file room.json contains the following parameters:
-Сoordinates in the configuration file must be specified relative to the point [0,0,0](start_point), which is located in the corner between the door to the auditorium and the wall
+Сoordinates in the configuration file must be specified relative to the point [0,0,0] - start_point , which is located in the corner between the door to the auditorium and the wall
 1) example of "wall":
   "Walls": {
 		"1": [
