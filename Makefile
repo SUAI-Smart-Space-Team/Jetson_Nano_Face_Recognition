@@ -24,7 +24,5 @@ pull:
 	docker pull ${REGISTRY}/${NAME}:${VERSION}
 
 run:
-	cd ./jetson_site
-	ls
-	chmod +x enter.sh
-	./enter.sh
+	chmod +x ./jetson_site/enter.sh
+	sh ./jetson_site/enter.sh
