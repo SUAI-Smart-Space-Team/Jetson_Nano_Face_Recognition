@@ -10,4 +10,4 @@ COPY ./jetson_site .
 RUN cd /jetson_site
 RUN yarn build
 #CMD ["yarn", "start -H 10.228.0.237"]
-RUN yarn start -H 127.0.0.1
+#RUN yarn start -H 127.0.0.1
