@@ -25,5 +25,6 @@ pull:
 
 run:
 	cd ./jetson_site
+	ls
 	chmod +x enter.sh
 	./enter.sh
