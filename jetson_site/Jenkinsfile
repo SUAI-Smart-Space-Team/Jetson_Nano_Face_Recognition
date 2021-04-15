@@ -7,7 +7,7 @@ pipeline {
              steps {
                script {
                    sh '''
-                   make image VERSION=jetson_site2 FILE=./jetson_site/Dockerfile BRANCH=null
+                   make image VERSION=jetson_site3 FILE=./jetson_site/Dockerfile BRANCH=null
                    make push VERSION=jetson_site3
                    make pull VERSION=jetson_site3
                    '''
