@@ -1,3 +1,3 @@
 #! /bin/bash
 
-yarn start -H 10.228.0.237
+yarn start -H 10.228.1.51
