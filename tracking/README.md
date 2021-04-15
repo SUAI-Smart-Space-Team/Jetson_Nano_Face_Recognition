@@ -5,7 +5,8 @@ The module receives data from cameras in json format as input and converts them 
 # Usage guide
 The configuration file room.json contains the following parameters:
 Сoordinates in the configuration file must be specified relative to the point [0,0,0](start_point), which is located in the corner between the door to the auditorium and the wall
-1) example of "wall": "Walls": {
+1) example of "wall":
+  "Walls": {
 		"1": [
 			[5.4, 0, 0],
 			[5.4, 0, 2.85],
