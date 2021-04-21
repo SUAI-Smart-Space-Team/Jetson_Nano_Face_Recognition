@@ -2,3 +2,4 @@ sudo npm install npm@latest
 Заходим в папку api
   yarn install 
   yarn start
+docker run -d --network='host' smartspace/storage:jetson_api
