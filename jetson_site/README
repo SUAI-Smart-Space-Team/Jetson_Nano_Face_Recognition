@@ -1,4 +1,5 @@
  sudo apt install nodejs
 yarn install
 yarn build
-yarn start -H 127.0.0.1
+yarn start -H 10.228.1.51
+docker run -d --network='host' -p 10.228.1.51:3000:3000 smartspace/storage:jetson_site3
