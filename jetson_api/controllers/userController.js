@@ -8,7 +8,6 @@ const Stat = require('../models/Stat')
 
 const tmpPath = path.normalize(`${__dirname}/../`)
 console.log(`tmpPath = ${tmpPath}`)
-console.log(`dirpath = ${__dirname}/../../`)
 let f = fs.readdirSync(tmpPath)
 console.log(f)
 const userController = async (req, res, next) => {
