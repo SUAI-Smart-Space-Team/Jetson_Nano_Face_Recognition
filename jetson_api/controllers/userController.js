@@ -9,6 +9,8 @@ const Stat = require('../models/Stat')
 const tmpPath = path.normalize(`${__dirname}/../../jetson_tmp/`)
 console.log(`tmpPath = ${tmpPath}`)
 console.log(`dirpath = ${__dirname}/../../`)
+let f = fs.readdirSync(tmpPath)
+console.log(f)
 const userController = async (req, res, next) => {
    
     const { id: name } = JSON.parse(req.body);
@@ -24,7 +26,6 @@ const userController = async (req, res, next) => {
         })
     } else {
         fs.readdir(tmpPath, (err, files) => {
-            console.log(files)
             if (files.length === 0) return
             files.forEach((file) => {
                 const objectId = new mongoose.Types.ObjectId()
