@@ -6,7 +6,7 @@ const mongoose = require('mongoose')
 const Image = require('../models/Image')
 const Stat = require('../models/Stat')
 
-const tmpPath = path.normalize(`${__dirname}/../`)
+const tmpPath = path.normalize(`${__dirname}/../jetson_tmp/`)
 console.log(`tmpPath = ${tmpPath}`)
 let f = fs.readdirSync(tmpPath)
 console.log(f)
