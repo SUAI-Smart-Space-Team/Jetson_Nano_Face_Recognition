@@ -11,6 +11,6 @@ RUN apt-get update && apt-get -y --force-yes install curl
 COPY ./jetson_api .
 RUN yarn install
 COPY . .
-RUN ls
+RUN ls ./jetson_tmp
 CMD ["sh", "enter.sh"]
 LABEL arch=arm64
