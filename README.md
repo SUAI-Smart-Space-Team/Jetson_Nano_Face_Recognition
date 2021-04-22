@@ -1,4 +1,4 @@
-**Read me**
+# Read me
 ------------
 This project is a face recognition system, its integration with the visitor positioning system, and a convenient shell for managing the project over the network.
 
