@@ -223,6 +223,7 @@ void sendId(string Id){
 //----------------------------------------------------------------------------------------
 int main(int argc, char **argv)
 {
+    sendId("");
     printTime();
     cout << endl;
     float f;
@@ -235,6 +236,7 @@ int main(int argc, char **argv)
     std::vector<FaceObject> Faces;
     vector<cv::Mat> fc1;
     string pattern_jpg = "./jetson_recognized/*.jpg";
+    string pattern_crp_jpg = "./jetson_crop/*.jpg";
     cv::String NewItemName;
     size_t FaceCnt;
     //the networks
@@ -340,6 +342,34 @@ int main(int argc, char **argv)
                 }
                 for(i=0; i<FaceCnt; i++){
                     Timers[i] = time(NULL);
+                }
+            }
+            cv::glob(pattern_crp_jpg, NameFaces);
+            if (NameFaces.size() > 0){
+
+                cv::Mat frame = cv::imread(NameFaces[0], 1);
+                //extract
+                ScaleX = ((float) frame.cols) / RetinaWidth;
+                ScaleY = ((float) frame.rows) / RetinaHeight;
+                // copy/resize image to result_cnn as input tensor
+                cv::resize(frame, result_cnn, Size(RetinaWidth,RetinaHeight),INTER_LINEAR);
+                //get the face
+                Rtn.detect_retinaface(result_cnn,Faces);
+                //only one face per picture
+                if(Faces.size()==1){
+                    if(Faces[0].FaceProb>MinFaceThreshold){
+                        //get centre aligned image
+                        cv::Mat aligned = Warp.Process(result_cnn,Faces[0]);
+
+                        cv::String Str = NameFaces[0];
+                        int n   = Str.rfind('/');
+                        Str = Str.erase(0,n+1);
+                        Str = Str.erase(Str.length()-4, Str.length()-1);  //remove .jpg
+
+
+                        imwrite("./img/"+Str+".jpg", aligned);
+                        cout << "Stored to database : " << Str << endl;
+                    }
                 }
             }
         }

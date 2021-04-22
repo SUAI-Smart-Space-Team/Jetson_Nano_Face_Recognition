@@ -16,7 +16,7 @@ export default function Index() {
   return (
     <Container maxWidth="md" style={{ marginTop: 60 }}>
       <Typography variant="h4" component="h1" style={{ marginBottom: 40 }} gutterBottom align="center">
-        {'JETSON'} <img src="/icon.png" style={{ width: 30, marginBottom: -3 }} />
+        {'Jetson Face Recognition'} <img src="/icon.png" style={{ width: 30, marginBottom: -3 }} />
       </Typography>
       <TabContext value={value}>
         <TabList value={value} onChange={handleChange} centered>
