@@ -23,7 +23,7 @@ const userController = async (req, res, next) => {
         })
     } else {
         fs.readdir(tmpPath, (err, files) => {
-            console.log(files.length)
+            console.log(files)
             if (files.length === 0) return
             files.forEach((file) => {
                 const objectId = new mongoose.Types.ObjectId()
