@@ -8,7 +8,7 @@ const Stat = require('../models/Stat')
 
 const tmpPath = path.normalize(`${__dirname}/../../jetson_tmp/`)
 console.log(`tmpPath = ${tmpPath}`)
-console.log(`dirpath = ${__dirname}`)
+console.log(`dirpath = ${__dirname}/../../`)
 const userController = async (req, res, next) => {
    
     const { id: name } = JSON.parse(req.body);
