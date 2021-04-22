@@ -12,6 +12,5 @@ COPY ./jetson_api .
 RUN yarn install
 RUN mkdir jetson_tmp
 COPY ./jetson_tmp /jetson_a/jetson_tmp
-RUN ls jetson_tmp
 CMD ["sh", "enter.sh"]
 LABEL arch=arm64
