@@ -10,5 +10,8 @@ RUN npm install --global yarn
 RUN apt-get update && apt-get -y --force-yes install curl
 #RUN apt -y --force-yes install wget
 COPY ./jetson_api .
+RUN yarn install
+RUN yarn build
+COPY . .
 CMD ["sh", "enter.sh"]
 LABEL arch=arm64
