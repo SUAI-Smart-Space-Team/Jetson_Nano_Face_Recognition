@@ -1,4 +1,5 @@
 import dbConnect from '../../utils/dbConnect'
+
 export default async function handler(req, res) {
     const { method } = req
 
@@ -10,7 +11,7 @@ export default async function handler(req, res) {
                 if (req.body.values.login === process.env.CLOUD_NAME && req.body.values.password === process.env.API_KEY) {
                     res.status(201).json({ success: true, data: 'Successful' })
                 } else {
-                    res.status(201).json({ success: true, data: 'Login is not valid' })
+                    res.status(201).json({ success: false, data: 'Login is not valid' })
                 }
             } catch (error) {
                 res.status(400).json({ success: false })

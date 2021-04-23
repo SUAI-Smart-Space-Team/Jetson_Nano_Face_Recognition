@@ -103,12 +103,40 @@ module.exports = require("@material-ui/core/colors");
 /***/ 0:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__("1TCz");
+module.exports = __webpack_require__("YNMu");
 
 
 /***/ }),
 
-/***/ "1TCz":
+/***/ "9Pu4":
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/styles");
+
+/***/ }),
+
+/***/ "AJJM":
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/CssBaseline");
+
+/***/ }),
+
+/***/ "F5FC":
+/***/ (function(module, exports) {
+
+module.exports = require("react/jsx-runtime");
+
+/***/ }),
+
+/***/ "Kps4":
+/***/ (function(module, exports) {
+
+module.exports = require("@emotion/react");
+
+/***/ }),
+
+/***/ "YNMu":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -180,34 +208,6 @@ function MyApp(props) {
 
 /***/ }),
 
-/***/ "9Pu4":
-/***/ (function(module, exports) {
-
-module.exports = require("@material-ui/core/styles");
-
-/***/ }),
-
-/***/ "AJJM":
-/***/ (function(module, exports) {
-
-module.exports = require("@material-ui/core/CssBaseline");
-
-/***/ }),
-
-/***/ "F5FC":
-/***/ (function(module, exports) {
-
-module.exports = require("react/jsx-runtime");
-
-/***/ }),
-
-/***/ "Kps4":
-/***/ (function(module, exports) {
-
-module.exports = require("@emotion/react");
-
-/***/ }),
-
 /***/ "cDcd":
 /***/ (function(module, exports) {
 
@@ -238,6 +238,7 @@ module.exports = require("next/head");
 /* harmony import */ var _material_ui_core_colors__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("+FwM");
 /* harmony import */ var _material_ui_core_colors__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_colors__WEBPACK_IMPORTED_MODULE_1__);
 
+ //create app theme 
 
 const theme = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_0__["createMuiTheme"])({
   palette: {

@@ -1,5 +1,7 @@
 import mongoose from 'mongoose'
 
+// image model
+
 const ImageSchema = new mongoose.Schema({
     name: String,
     url: String,

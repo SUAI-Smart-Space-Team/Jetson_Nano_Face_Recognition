@@ -34,7 +34,7 @@
 // Adjustable Parameters
 //----------------------------------------------------------------------------------------
 const int   MaxItemsDatabase = 2000;
-const int   MinHeightFace    = 30;
+const int   MinHeightFace    = 40;
 const float MinFaceThreshold = 0.50;
 const float FaceLiving       = 0.93;
 const double MaxBlur         = -25.0;   //more positive = sharper image
@@ -327,6 +327,7 @@ int main(int argc, char **argv)
     cout << "Start grabbing, press ESC on TLive window to terminate" << endl;
     while(1){
         if (curDelay + TimerDelay < time(NULL)) {
+
             curDelay = time(NULL);
             cv::glob(pattern_jpg, NameFaces);
             size_t newFaceCnt = NameFaces.size();
@@ -342,34 +343,6 @@ int main(int argc, char **argv)
                 }
                 for(i=0; i<FaceCnt; i++){
                     Timers[i] = time(NULL);
-                }
-            }
-            cv::glob(pattern_crp_jpg, NameFaces);
-            if (NameFaces.size() > 0){
-
-                cv::Mat frame = cv::imread(NameFaces[0], 1);
-                //extract
-                ScaleX = ((float) frame.cols) / RetinaWidth;
-                ScaleY = ((float) frame.rows) / RetinaHeight;
-                // copy/resize image to result_cnn as input tensor
-                cv::resize(frame, result_cnn, Size(RetinaWidth,RetinaHeight),INTER_LINEAR);
-                //get the face
-                Rtn.detect_retinaface(result_cnn,Faces);
-                //only one face per picture
-                if(Faces.size()==1){
-                    if(Faces[0].FaceProb>MinFaceThreshold){
-                        //get centre aligned image
-                        cv::Mat aligned = Warp.Process(result_cnn,Faces[0]);
-
-                        cv::String Str = NameFaces[0];
-                        int n   = Str.rfind('/');
-                        Str = Str.erase(0,n+1);
-                        Str = Str.erase(Str.length()-4, Str.length()-1);  //remove .jpg
-
-
-                        imwrite("./img/"+Str+".jpg", aligned);
-                        cout << "Stored to database : " << Str << endl;
-                    }
                 }
             }
         }
@@ -427,6 +400,8 @@ int main(int argc, char **argv)
                             //recognize a face
                         if(Faces[i].rect.height < MinHeightFace){
                             Faces[i].Color = 2; //found face in database, but too tiny
+                            imwrite("./jetson_tmp/photo.jpg", result_cnn);
+                            imwrite("./jetson_tmp/croped.jpg", aligned);
                             sendId("");
                         }
                         else {
@@ -438,6 +413,7 @@ int main(int argc, char **argv)
                                     sendId(NameFaces[Pmax]);
                                     printTime();
                                     cout << " Hello: " << NameFaces[Pmax] << endl;
+
                                 }
                             }
                             else{

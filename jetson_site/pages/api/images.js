@@ -1,6 +1,5 @@
 import dbConnect from '../../utils/dbConnect'
 import Image from '../../models/Image'
-import User from '../../models/User'
 
 export default async function handler(req, res) {
     const { method } = req
@@ -19,16 +18,17 @@ export default async function handler(req, res) {
                 res.status(400).json({ success: false })
             }
             break
-        // case 'POST':
-        //     try {
-        //         const user = await User.create(
-        //             req.body
-        //         )
-        //         res.status(201).json({ success: true, data: user })
-        //     } catch (error) {
-        //         res.status(400).json({ success: false })
-        //     }
-        //     break
+        case 'DELETE':
+            try {
+                const images = await Image.deleteMany({ user: null })
+
+                if (!images) return res.status(400).json({ success: false })
+
+                res.status(200).json({ success: true, data: {} })
+            } catch (error) {
+                res.status(400).json({ success: false })
+            }
+            break
         default:
             res.status(400).json({ success: false })
             break

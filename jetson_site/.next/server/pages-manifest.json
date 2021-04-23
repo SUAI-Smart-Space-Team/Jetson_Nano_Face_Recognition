@@ -4,6 +4,7 @@
   "/api/images": "pages/api/images.js",
   "/api/login": "pages/api/login.js",
   "/api/stats": "pages/api/stats.js",
+  "/api/upload": "pages/api/upload.js",
   "/api/users": "pages/api/users.js",
   "/dashboard": "pages/dashboard.html",
   "/": "pages/index.html",

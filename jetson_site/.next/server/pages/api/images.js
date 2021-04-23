@@ -108,27 +108,10 @@ module.exports = require("mongoose");
 
 /***/ }),
 
-/***/ "OiCc":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ "RDmp":
+/***/ (function(module, exports) {
 
-"use strict";
-/* harmony import */ var mongoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("FiKB");
-/* harmony import */ var mongoose__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(mongoose__WEBPACK_IMPORTED_MODULE_0__);
-var _mongoose$models;
-
-
-const UserSchema = new mongoose__WEBPACK_IMPORTED_MODULE_0___default.a.Schema({
-  name: String,
-  images: [{
-    type: mongoose__WEBPACK_IMPORTED_MODULE_0___default.a.Schema.Types.ObjectId,
-    ref: 'Image'
-  }],
-  date: {
-    type: Date,
-    default: Date.now
-  }
-});
-/* harmony default export */ __webpack_exports__["a"] = (((_mongoose$models = mongoose__WEBPACK_IMPORTED_MODULE_0___default.a.models) === null || _mongoose$models === void 0 ? void 0 : _mongoose$models.User) || mongoose__WEBPACK_IMPORTED_MODULE_0___default.a.model('User', UserSchema));
+module.exports = require("cloudinary");
 
 /***/ }),
 
@@ -138,13 +121,22 @@ const UserSchema = new mongoose__WEBPACK_IMPORTED_MODULE_0___default.a.Schema({
 "use strict";
 /* harmony import */ var mongoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("FiKB");
 /* harmony import */ var mongoose__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(mongoose__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var cloudinary__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("RDmp");
+/* harmony import */ var cloudinary__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(cloudinary__WEBPACK_IMPORTED_MODULE_1__);
 
+ //connect to db 
 
 async function dbConnect() {
+  //return if connetcion exist 
   if (mongoose__WEBPACK_IMPORTED_MODULE_0___default.a.connection.readyState >= 1) {
     return;
   }
 
+  cloudinary__WEBPACK_IMPORTED_MODULE_1__["v2"].config({
+    api_key: process.env.API_KEY,
+    api_secret: process.env.API_SECRET,
+    cloud_name: process.env.CLOUD_NAME
+  });
   return mongoose__WEBPACK_IMPORTED_MODULE_0___default.a.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -165,8 +157,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return handler; });
 /* harmony import */ var _utils_dbConnect__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("RuLO");
 /* harmony import */ var _models_Image__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("kP+l");
-/* harmony import */ var _models_User__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("OiCc");
-
 
 
 async function handler(req, res) {
@@ -199,16 +189,26 @@ async function handler(req, res) {
       }
 
       break;
-    // case 'POST':
-    //     try {
-    //         const user = await User.create(
-    //             req.body
-    //         )
-    //         res.status(201).json({ success: true, data: user })
-    //     } catch (error) {
-    //         res.status(400).json({ success: false })
-    //     }
-    //     break
+
+    case 'DELETE':
+      try {
+        const images = await _models_Image__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].deleteMany({
+          user: null
+        });
+        if (!images) return res.status(400).json({
+          success: false
+        });
+        res.status(200).json({
+          success: true,
+          data: {}
+        });
+      } catch (error) {
+        res.status(400).json({
+          success: false
+        });
+      }
+
+      break;
 
     default:
       res.status(400).json({
@@ -226,6 +226,7 @@ async function handler(req, res) {
 "use strict";
 /* harmony import */ var mongoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("FiKB");
 /* harmony import */ var mongoose__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(mongoose__WEBPACK_IMPORTED_MODULE_0__);
+ // image model
 
 const ImageSchema = new mongoose__WEBPACK_IMPORTED_MODULE_0___default.a.Schema({
   name: String,
