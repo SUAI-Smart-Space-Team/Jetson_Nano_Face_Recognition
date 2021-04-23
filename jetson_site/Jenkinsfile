@@ -1,0 +1,18 @@
+pipeline {
+    agent {
+       label "jcworker"
+    }
+    stages {
+          stage("connect") {
+             steps {
+               script {
+                   sh '''
+                   make image VERSION=jetson_site4 FILE=./jetson_site/Dockerfile BRANCH=null
+                   make push VERSION=jetson_site4
+                   make pull VERSION=jetson_site4
+                   '''
+               }
+             }
+          }
+        }
+} 
